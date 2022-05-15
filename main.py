@@ -1,5 +1,6 @@
 import pygame
 import random
+import copy
 
 pygame.init()
 
@@ -162,6 +163,14 @@ def check_position():
                         return False
                 temp_l = pygame.Rect((a.x - 30, a.y), (30, 30))
                 if pygame.Rect.colliderect(temp_l, f):
+                    if a.left == f.right:
+                        return False
+                temp_br = pygame.Rect((a.x + 30, a.y + 30), (30, 30))
+                if pygame.Rect.colliderect(temp_br, f):
+                    if a.right == f.left:
+                        return False
+                temp_bl = pygame.Rect((a.x - 30, a.y + 30), (30, 30))
+                if pygame.Rect.colliderect(temp_bl, f):
                     if a.left == f.right:
                         return False
     return True
